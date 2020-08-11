@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_gnb_webtoon"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/menu_gnb_webtoon_off" />
+
+    <item
+        android:id="@+id/menu_gnb_recommend"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/menu_gnb_recommendfinish_off" />
+
+    <item
+        android:id="@+id/menu_gnb_bestchallenge"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/menu_gnb_bestchallenge_off" />
+
+    <item
+        android:id="@+id/menu_gnb_my"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/menu_gnb_my_off" />
+
+    <item
+        android:id="@+id/menu_gnb_more"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/menu_gnb_more_off" />
+
+</menu>
