@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import wizley.android.clone.naver.mimicwebtoon.MainActivity
+import wizley.android.clone.naver.mimicwebtoon.main.MainActivity
 import wizley.android.clone.naver.mimicwebtoon.databinding.ActivitySplashBinding
 
 class SplashActivity: AppCompatActivity() {
