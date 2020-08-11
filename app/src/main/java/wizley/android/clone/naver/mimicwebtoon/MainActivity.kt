@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import androidx.core.view.forEach
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import wizley.android.clone.naver.mimicwebtoon.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
-    View.OnLongClickListener {
+class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -66,11 +66,5 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 selectedMenu.setIcon(R.drawable.menu_gnb_more_on)
             }
         }
-
-    }
-
-    override fun onLongClick(v: View?): Boolean {
-        Log.e("here", v?.id.toString())
-        return true
     }
 }
