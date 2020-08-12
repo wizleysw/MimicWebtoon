@@ -15,7 +15,8 @@ import wizley.android.clone.naver.mimicwebtoon.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var pager: ViewPager
+//    private lateinit var pager: ViewPager
+    private lateinit var pager: WrapHeightViewPager
     private lateinit var currentPage: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {

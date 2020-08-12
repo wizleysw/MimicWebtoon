@@ -64,12 +64,11 @@ class WebtoonListFragment: Fragment(){
             binding.root.rv.apply {
                 layoutManager = rvManager
                 adapter = rvAdapter
-                setItemViewCacheSize(1024)
+                isNestedScrollingEnabled = false;
             }
+
         }
+
     }
-
-
-
 
 }
