@@ -6,16 +6,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import wizley.android.clone.naver.mimicwebtoon.R
 import wizley.android.clone.naver.mimicwebtoon.databinding.ActivityMainBinding
+import wizley.android.clone.naver.mimicwebtoon.databinding.TestBinding
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
-//    private lateinit var pager: ViewPager
     private lateinit var pager: WrapHeightViewPager
     private lateinit var currentPage: TextView
 
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         binding.gnbBar.itemIconTintList = null
@@ -30,6 +32,10 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         setGnbColor()
         setPager()
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     override fun onNavigationItemSelected(menu: MenuItem): Boolean {
@@ -81,6 +87,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         val pagerAdapter = ViewPagerAdapter(supportFragmentManager)
         pager.adapter = pagerAdapter
+        pagerAdapter.notifyDataSetChanged()
         pager.currentItem = 0
 
         currentPage = binding.pagerBarNew

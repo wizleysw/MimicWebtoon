@@ -66,7 +66,7 @@ class WebtoonListFragment: Fragment(){
                 adapter = rvAdapter
                 isNestedScrollingEnabled = false;
             }
-
+            rvAdapter.notifyDataSetChanged()
         }
 
     }
