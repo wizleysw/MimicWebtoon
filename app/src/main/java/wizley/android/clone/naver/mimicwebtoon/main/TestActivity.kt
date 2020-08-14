@@ -1,16 +1,20 @@
 package wizley.android.clone.naver.mimicwebtoon.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import kotlinx.android.synthetic.main.test.*
+import wizley.android.clone.naver.mimicwebtoon.R
 import wizley.android.clone.naver.mimicwebtoon.databinding.TestBinding
 
 class TestActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener{
 
     private lateinit var binding: TestBinding
 
+    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,19 +24,23 @@ class TestActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
         setSupportActionBar(binding.toolbar)
         supportActionBar?.hide()
 
+        val toolbar = layoutInflater.inflate(R.layout.custom_actionbar, null)
+        supportActionBar?.customView = toolbar
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+
         binding.scrollview.setOnScrollChangeListener(this)
     }
 
     override fun onStart() {
         super.onStart()
-
-        supportActionBar?.show()
     }
 
     override fun onResume() {
         super.onResume()
 
-        supportActionBar?.hide()
     }
 
     override fun onScrollChange(
@@ -43,21 +51,15 @@ class TestActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
         oldScrollY: Int
     ) {
         if(scrollY == 0){
-            Log.e("TAG", "hide")
-            Log.e("TAG", supportActionBar.toString())
-            runOnUiThread(Runnable{
-                supportActionBar?.hide()
-            })
             supportActionBar?.hide()
-            supportActionBar?.hide()
-            supportActionBar?.hide()
-            Log.e("TAG", supportActionBar!!.isShowing.toString())
-        }
-        else {
-            Log.e("TAG", "show")
+        } else {
             supportActionBar?.show()
-            Log.e("TAG", supportActionBar!!.isShowing.toString())
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.appbar, menu)
+        return true
     }
 
 }
