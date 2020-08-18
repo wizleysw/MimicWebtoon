@@ -213,62 +213,69 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
         initPagerAppBar()
     }
 
-    private fun setPagerBar(view: TextView){
+    private fun setPagerBar(view: TextView, appbarView: TextView){
         if(view.id == currentPage.id) return
 
         if(view.id == R.id.pager_bar_new){
             binding.pagerBarBtnLayout.pagerBarNewBg.setBackgroundColor(Color.rgb(4, 206, 92))
+            binding.pagerBarBynLayoutAppbar.pagerBarNewBg.setBackgroundColor(Color.rgb(4, 206, 92))
         } else {
             view.setBackgroundColor(Color.rgb(4, 206, 92))
+            appbarView.setBackgroundColor(Color.rgb(4, 206, 92))
         }
         view.setTextColor(Color.WHITE)
+        appbarView.setTextColor(Color.WHITE)
 
         if(currentPage.id == R.id.pager_bar_new){
             binding.pagerBarBtnLayout.pagerBarNewBg.setBackgroundColor(Color.WHITE)
+            binding.pagerBarBynLayoutAppbar.pagerBarNewBg.setBackgroundColor(Color.WHITE)
         } else {
             currentPage.setBackgroundColor(Color.WHITE)
+            currentPageAppbar.setBackgroundColor(Color.WHITE)
         }
         currentPage.setTextColor(Color.BLACK)
+        currentPageAppbar.setTextColor(Color.BLACK)
 
         currentPage = view
+        currentPageAppbar = appbarView
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.pager_bar_new -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarNew)
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarNew, binding.pagerBarBynLayoutAppbar.pagerBarNew)
                 pager.currentItem = 0
             }
             R.id.pager_bar_mon -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarMon)
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarMon, binding.pagerBarBynLayoutAppbar.pagerBarMon)
                 pager.currentItem = 1
             }
             R.id.pager_bar_tue -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarTue)
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarTue, binding.pagerBarBynLayoutAppbar.pagerBarTue)
                 pager.currentItem = 2
             }
             R.id.pager_bar_wed -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarWed)
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarWed, binding.pagerBarBynLayoutAppbar.pagerBarWed)
                 pager.currentItem = 3
             }
             R.id.pager_bar_thu -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarThu)
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarThu, binding.pagerBarBynLayoutAppbar.pagerBarThu)
                 pager.currentItem = 4
             }
             R.id.pager_bar_fri -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarFri)
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarFri, binding.pagerBarBynLayoutAppbar.pagerBarFri)
                 pager.currentItem = 5
             }
             R.id.pager_bar_sat -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarSat)
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarSat, binding.pagerBarBynLayoutAppbar.pagerBarSat)
                 pager.currentItem = 6
             }
             R.id.pager_bar_sun -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarSun)
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarSun, binding.pagerBarBynLayoutAppbar.pagerBarSun)
                 pager.currentItem = 7
             }
             R.id.pager_bar_fin -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarFin)
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarFin, binding.pagerBarBynLayoutAppbar.pagerBarFin)
                 pager.currentItem = 8
             }
         }
