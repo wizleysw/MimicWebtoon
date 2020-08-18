@@ -6,6 +6,7 @@
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
@@ -16,9 +17,16 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            app:contentScrim="@android:color/black"
             android:fitsSystemWindows="true"
-            app:layout_collapseMode="pin"/>
+            app:contentScrim="@android:color/black"
+            app:layout_collapseMode="pin" />
+
+        <include
+            android:id="@+id/pager_bar_byn_layout_appbar"
+            layout="@layout/main_menu_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -36,35 +44,63 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="@id/gnb_bar">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/scrollView_constraint_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <ImageView
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/banner_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:src="@drawable/banner_1"/>
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/pager_bar_btn_layout">
 
-                <ImageView
+                    <ImageView
+                        android:id="@+id/top_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/banner_1"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <include
+                    layout="@layout/main_menu_bar"
+                    android:id="@+id/pager_bar_btn_layout"
+                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:src="@drawable/banner_1"/>
+                    app:layout_constraintTop_toBottomOf="@id/banner_layout"
+                    app:layout_constraintBottom_toTopOf="@id/view_pager"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
 
-                <ImageView
+                <wizley.android.clone.naver.mimicwebtoon.main.WrapHeightViewPager
+                    android:id="@+id/view_pager"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:src="@drawable/banner_1"/>
+                    android:layout_height="wrap_content"
+                    app:layout_constraintVertical_weight="1"
+                    app:layout_constraintTop_toBottomOf="@id/pager_bar_btn_layout"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:src="@drawable/banner_1"/>
 
-            </LinearLayout>
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <ImageView
+            android:id="@+id/image_banner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/image_banner"
+            app:layout_constraintTop_toBottomOf="@id/scrollview"
+            app:layout_constraintBottom_toTopOf="@id/gnb_bar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/gnb_bar"
@@ -78,15 +114,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/gnb"/>
 
-        <ImageView
-            android:id="@+id/image_banner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@android:color/black"
-            app:layout_constraintTop_toBottomOf="@id/scrollview"
-            app:layout_constraintBottom_toTopOf="@id/gnb_bar"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
