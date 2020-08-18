@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.test.*
 import org.w3c.dom.Text
@@ -20,7 +21,8 @@ import wizley.android.clone.naver.mimicwebtoon.R
 import wizley.android.clone.naver.mimicwebtoon.databinding.ActivityMainBinding
 import wizley.android.clone.naver.mimicwebtoon.databinding.TestBinding
 
-class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener, BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener, BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener,
+    ViewPager.OnPageChangeListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -49,6 +51,7 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
     override fun onResume() {
         super.onResume()
 
+        Log.e("TAG", pager.currentItem.toString())
     }
 
     override fun onScrollChange(
@@ -203,6 +206,7 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
     private fun initPager(){
         pager = binding.viewPager
         pager.setPageTransformer(true, ViewPagerTransformer())
+        pager.addOnPageChangeListener(this)
 
         val pagerAdapter = ViewPagerAdapter(supportFragmentManager)
         pager.adapter = pagerAdapter
@@ -243,39 +247,30 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.pager_bar_new -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarNew, binding.pagerBarBynLayoutAppbar.pagerBarNew)
                 pager.currentItem = 0
             }
             R.id.pager_bar_mon -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarMon, binding.pagerBarBynLayoutAppbar.pagerBarMon)
                 pager.currentItem = 1
             }
             R.id.pager_bar_tue -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarTue, binding.pagerBarBynLayoutAppbar.pagerBarTue)
                 pager.currentItem = 2
             }
             R.id.pager_bar_wed -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarWed, binding.pagerBarBynLayoutAppbar.pagerBarWed)
                 pager.currentItem = 3
             }
             R.id.pager_bar_thu -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarThu, binding.pagerBarBynLayoutAppbar.pagerBarThu)
                 pager.currentItem = 4
             }
             R.id.pager_bar_fri -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarFri, binding.pagerBarBynLayoutAppbar.pagerBarFri)
                 pager.currentItem = 5
             }
             R.id.pager_bar_sat -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarSat, binding.pagerBarBynLayoutAppbar.pagerBarSat)
                 pager.currentItem = 6
             }
             R.id.pager_bar_sun -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarSun, binding.pagerBarBynLayoutAppbar.pagerBarSun)
                 pager.currentItem = 7
             }
             R.id.pager_bar_fin -> {
-                setPagerBar(binding.pagerBarBtnLayout.pagerBarFin, binding.pagerBarBynLayoutAppbar.pagerBarFin)
                 pager.currentItem = 8
             }
         }
@@ -297,6 +292,47 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
         val scrollBounds = Rect()
         binding.scrollview.getHitRect(scrollBounds)
         return binding.topBanner.getLocalVisibleRect(scrollBounds)
+    }
+
+    override fun onPageScrollStateChanged(state: Int) {
+
+    }
+
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+    }
+
+    override fun onPageSelected(position: Int) {
+        Log.e("TAG", "onPageSelected")
+        when(position){
+            0 -> {
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarNew, binding.pagerBarBynLayoutAppbar.pagerBarNew)
+            }
+            1 -> {
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarMon, binding.pagerBarBynLayoutAppbar.pagerBarMon)
+            }
+            2 -> {
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarTue, binding.pagerBarBynLayoutAppbar.pagerBarTue)
+            }
+            3 -> {
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarWed, binding.pagerBarBynLayoutAppbar.pagerBarWed)
+            }
+            4 -> {
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarThu, binding.pagerBarBynLayoutAppbar.pagerBarThu)
+            }
+            5 -> {
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarFri, binding.pagerBarBynLayoutAppbar.pagerBarFri)
+            }
+            6 -> {
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarSat, binding.pagerBarBynLayoutAppbar.pagerBarSat)
+            }
+            7 -> {
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarSun, binding.pagerBarBynLayoutAppbar.pagerBarSun)
+            }
+            8 -> {
+                setPagerBar(binding.pagerBarBtnLayout.pagerBarFin, binding.pagerBarBynLayoutAppbar.pagerBarFin)
+            }
+        }
     }
 
 }

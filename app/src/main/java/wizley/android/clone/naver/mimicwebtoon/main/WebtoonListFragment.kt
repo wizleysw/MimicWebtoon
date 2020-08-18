@@ -53,7 +53,6 @@ class WebtoonListFragment: Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
-        Log.e("TAG", arguments?.getInt("position").toString())
     }
 
     private fun initRecyclerView(){

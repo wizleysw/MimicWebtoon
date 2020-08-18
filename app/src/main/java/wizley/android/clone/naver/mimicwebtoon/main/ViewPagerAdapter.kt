@@ -22,4 +22,5 @@ class ViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm){
         throw IllegalStateException("Error")
     }
 
+
 }
