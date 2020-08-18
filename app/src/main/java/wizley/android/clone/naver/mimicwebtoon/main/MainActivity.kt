@@ -61,7 +61,7 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
         oldScrollX: Int,
         oldScrollY: Int
     ) {
-        if(scrollY == 0){
+        if(scrollY <= 10){
             supportActionBar?.hide()
             hideImageBanner()
         } else {
@@ -303,7 +303,6 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
     }
 
     override fun onPageSelected(position: Int) {
-        Log.e("TAG", "onPageSelected")
         when(position){
             0 -> {
                 setPagerBar(binding.pagerBarBtnLayout.pagerBarNew, binding.pagerBarBynLayoutAppbar.pagerBarNew)
