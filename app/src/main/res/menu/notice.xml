@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/overflow_copy"
+        app:showAsAction="never"
+        android:title="링크 복사"/>
+
+    <item android:id="@+id/overflow_share"
+        app:showAsAction="never"
+        android:title="링크 공유"/>
+
+    <item android:id="@+id/overflow_internet"
+        app:showAsAction="never"
+        android:title="브라우저에서 열기"/>
+
+</menu>

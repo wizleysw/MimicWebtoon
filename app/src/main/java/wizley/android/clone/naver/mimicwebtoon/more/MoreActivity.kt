@@ -1,14 +1,18 @@
 package wizley.android.clone.naver.mimicwebtoon.more
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import wizley.android.clone.naver.mimicwebtoon.R
 import wizley.android.clone.naver.mimicwebtoon.databinding.ActivityMoreBinding
+import wizley.android.clone.naver.mimicwebtoon.more.notice.NoticeActivity
 
-class MoreActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class MoreActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
+    View.OnClickListener {
 
     private lateinit var binding: ActivityMoreBinding
 
@@ -20,6 +24,7 @@ class MoreActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSe
 
         initActionBar()
         initGnbBar()
+        initGridButton()
     }
 
     private fun initActionBar(){
@@ -63,6 +68,20 @@ class MoreActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSe
             }
         }
         return false
+    }
+
+    private fun initGridButton(){
+        binding.noticeButton.setOnClickListener(this)
+
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.notice_button -> {
+                val intent = Intent(this, NoticeActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
 }
