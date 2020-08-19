@@ -31,6 +31,7 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
     private lateinit var pager: WrapHeightViewPager
     private lateinit var currentPage: TextView
     private lateinit var currentPageAppbar: TextView
+    private var initFlag = false
 
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,13 +49,10 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
 
     override fun onStart() {
         super.onStart()
-
     }
 
     override fun onResume() {
         super.onResume()
-
-        Log.e("TAG", pager.currentItem.toString())
     }
 
     override fun onScrollChange(
@@ -215,7 +213,7 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
         val pagerAdapter = ViewPagerAdapter(supportFragmentManager)
         pager.adapter = pagerAdapter
         pagerAdapter.notifyDataSetChanged()
-        pager.currentItem = 0
+        pager.setCurrentItem(0, true)
 
         initPagerBar()
         initPagerAppBar()

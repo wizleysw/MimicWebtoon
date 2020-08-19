@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".splash.SplashActivity">
+        <activity android:name=".main.episode.EpisodeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +23,7 @@
         <activity android:name=".more.MoreActivity"/>
         <activity android:name=".more.settings.SettingsActivity"/>
         <activity android:name=".more.settings.autoplay.AutoplaySettingsActivity"/>
+<!--        <activity android:name=".main.webtoon.WebtoonActivity"/>-->
     </application>
 
 </manifest>
