@@ -1,6 +1,7 @@
 package wizley.android.clone.naver.mimicwebtoon.main
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
@@ -20,6 +21,7 @@ import org.w3c.dom.Text
 import wizley.android.clone.naver.mimicwebtoon.R
 import wizley.android.clone.naver.mimicwebtoon.databinding.ActivityMainBinding
 import wizley.android.clone.naver.mimicwebtoon.databinding.TestBinding
+import wizley.android.clone.naver.mimicwebtoon.more.MoreActivity
 
 class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener, BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener,
     ViewPager.OnPageChangeListener {
@@ -46,6 +48,7 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
 
     override fun onStart() {
         super.onStart()
+
     }
 
     override fun onResume() {
@@ -141,7 +144,8 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
 
             }
             R.id.menu_gnb_more -> {
-
+                val intent = Intent(this, MoreActivity::class.java)
+                startActivity(intent)
             }
         }
         return false

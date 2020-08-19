@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import wizley.android.clone.naver.mimicwebtoon.R
 import wizley.android.clone.naver.mimicwebtoon.databinding.ActivityMoreBinding
+import wizley.android.clone.naver.mimicwebtoon.main.MainActivity
 import wizley.android.clone.naver.mimicwebtoon.more.notice.NoticeActivity
+import wizley.android.clone.naver.mimicwebtoon.more.settings.SettingsActivity
 
 class MoreActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
     View.OnClickListener {
@@ -52,7 +54,8 @@ class MoreActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSe
     override fun onNavigationItemSelected(menu: MenuItem): Boolean {
         when(menu.itemId){
             R.id.menu_gnb_webtoon -> {
-
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
             R.id.menu_gnb_recommend -> {
 
@@ -72,13 +75,17 @@ class MoreActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSe
 
     private fun initGridButton(){
         binding.noticeButton.setOnClickListener(this)
-
+        binding.settingButton.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.notice_button -> {
                 val intent = Intent(this, NoticeActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.setting_button -> {
+                val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
             }
         }

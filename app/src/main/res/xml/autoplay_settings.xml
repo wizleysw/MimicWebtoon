@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:key="autoplay_category">
+
+        <CheckBoxPreference
+            android:key="always"
+            android:title="항상 켜기"
+            android:defaultValue="true"/>
+
+        <CheckBoxPreference
+            android:key="wifi"
+            android:title="Wi-Fi에서만"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="disable"
+            android:title="항상 끄기"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

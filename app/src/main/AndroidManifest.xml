@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".more.MoreActivity">
+        <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +20,9 @@
         </activity>
         <activity android:name=".main.MainActivity"/>
         <activity android:name=".more.notice.NoticeActivity"/>
+        <activity android:name=".more.MoreActivity"/>
+        <activity android:name=".more.settings.SettingsActivity"/>
+        <activity android:name=".more.settings.autoplay.AutoplaySettingsActivity"/>
     </application>
 
 </manifest>
