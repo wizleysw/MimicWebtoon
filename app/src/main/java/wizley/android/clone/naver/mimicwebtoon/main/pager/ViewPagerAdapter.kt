@@ -1,4 +1,4 @@
-package wizley.android.clone.naver.mimicwebtoon.main
+package wizley.android.clone.naver.mimicwebtoon.main.pager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -16,7 +16,9 @@ class ViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm){
 
         when(position){
             in 0..8-> {
-                return WebtoonListFragment.newInstance(position)
+                return WebtoonListFragment.newInstance(
+                    position
+                )
             }
         }
         throw IllegalStateException("Error")

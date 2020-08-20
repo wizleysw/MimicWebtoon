@@ -1,4 +1,4 @@
-package wizley.android.clone.naver.mimicwebtoon.main
+package wizley.android.clone.naver.mimicwebtoon.main.pager
 
 import android.view.View
 import androidx.viewpager.widget.ViewPager

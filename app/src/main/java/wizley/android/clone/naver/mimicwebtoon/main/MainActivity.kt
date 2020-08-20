@@ -5,22 +5,20 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.test.*
-import org.w3c.dom.Text
 import wizley.android.clone.naver.mimicwebtoon.R
 import wizley.android.clone.naver.mimicwebtoon.databinding.ActivityMainBinding
-import wizley.android.clone.naver.mimicwebtoon.databinding.TestBinding
+import wizley.android.clone.naver.mimicwebtoon.main.pager.ViewPagerAdapter
+import wizley.android.clone.naver.mimicwebtoon.main.pager.ViewPagerTransformer
+import wizley.android.clone.naver.mimicwebtoon.main.pager.WrapHeightViewPager
 import wizley.android.clone.naver.mimicwebtoon.more.MoreActivity
 
 class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener, BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener,
@@ -208,10 +206,15 @@ class MainActivity: AppCompatActivity(), NestedScrollView.OnScrollChangeListener
 
     private fun initPager(){
         pager = binding.viewPager
-        pager.setPageTransformer(true, ViewPagerTransformer())
+        pager.setPageTransformer(true,
+            ViewPagerTransformer()
+        )
         pager.addOnPageChangeListener(this)
 
-        val pagerAdapter = ViewPagerAdapter(supportFragmentManager)
+        val pagerAdapter =
+            ViewPagerAdapter(
+                supportFragmentManager
+            )
         pager.adapter = pagerAdapter
         pagerAdapter.notifyDataSetChanged()
         pager.setCurrentItem(0, true)

@@ -1,8 +1,7 @@
-package wizley.android.clone.naver.mimicwebtoon.main
+package wizley.android.clone.naver.mimicwebtoon.main.pager
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,19 +12,20 @@ import wizley.android.clone.naver.mimicwebtoon.main.episode.EpisodeActivity
 
 class WebtoonRVAdapter(
     val context: Context,
-    val webtoons: ArrayList<*>
+    var webtoons: ArrayList<WebtoonInfo>
 ): RecyclerView.Adapter<WebtoonRVAdapter.WebtoonHolder>() {
 
     class WebtoonHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WebtoonHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.rv_webtoon, parent, false)
-        return WebtoonHolder(view)
+        return WebtoonHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int {
-        // return webtoons.size
-        return 12
+        return webtoons.size
     }
 
     override fun onBindViewHolder(holder: WebtoonHolder, position: Int) {
@@ -34,9 +34,9 @@ class WebtoonRVAdapter(
             context.startActivity(intent)
         }
         // holder.itemView.pic
-        // holder.itemView.title
-        // holder.itemView.star_rating
-        // holder.itemView.author
+         holder.itemView.title.text = webtoons[position].title
+         holder.itemView.star_rating.text = webtoons[position].star
+         holder.itemView.author.text = webtoons[position].author
 
     }
 }
