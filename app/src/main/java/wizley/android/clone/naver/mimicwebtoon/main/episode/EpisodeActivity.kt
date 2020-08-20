@@ -78,6 +78,7 @@ class EpisodeActivity: AppCompatActivity(), BottomNavigationView.OnNavigationIte
         when(menu.itemId){
             R.id.menu_gnb_webtoon -> {
                 val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
                 finish()
             }
@@ -92,6 +93,7 @@ class EpisodeActivity: AppCompatActivity(), BottomNavigationView.OnNavigationIte
             }
             R.id.menu_gnb_more -> {
                 val intent = Intent(this, MoreActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
             }
         }

@@ -56,7 +56,7 @@ class WebtoonListFragment: Fragment(){
     }
 
     private fun initRecyclerView(){
-        rvAdapter = WebtoonRVAdapter(ArrayList<String>())
+        rvAdapter = WebtoonRVAdapter(requireActivity(), ArrayList<String>())
         rvManager = GridLayoutManager(this.context, 3)
 
         activity?.runOnUiThread{

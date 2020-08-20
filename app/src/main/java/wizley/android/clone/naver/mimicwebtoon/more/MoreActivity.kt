@@ -55,6 +55,7 @@ class MoreActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSe
         when(menu.itemId){
             R.id.menu_gnb_webtoon -> {
                 val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
             }
             R.id.menu_gnb_recommend -> {
