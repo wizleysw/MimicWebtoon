@@ -88,22 +88,19 @@ class WebtoonListFragment: Fragment(){
     }
 
     private fun initRecyclerView(){
-        rvAdapter =
-            WebtoonRVAdapter(
-                requireActivity(),
-                ArrayList<WebtoonInfo>()
-            )
+        rvAdapter = WebtoonRVAdapter(
+            requireActivity(),
+            ArrayList<WebtoonInfo>()
+        )
         rvManager = GridLayoutManager(this.context, 3)
 
         activity?.runOnUiThread{
             binding.root.rv.apply {
                 layoutManager = rvManager
                 adapter = rvAdapter
-                isNestedScrollingEnabled = false;
             }
             rvAdapter.notifyDataSetChanged()
         }
-
     }
 
     private fun parseWebtoonList(day: String){

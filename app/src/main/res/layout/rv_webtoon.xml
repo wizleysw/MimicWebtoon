@@ -8,11 +8,12 @@
 
     <ImageView
         android:id="@+id/pic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/webtoon_1"
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        android:src="@drawable/watermark"
         android:padding="0dp"
         android:layout_margin="0dp"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -23,7 +24,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="인생존망"
+        android:text="제목"
         android:textStyle="bold"
         android:paddingTop="5dp"
         android:layout_marginLeft="4dp"
@@ -53,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="9.82"
+        android:text="9.99"
         android:textSize="11sp"
         android:layout_marginLeft="1dp"
         android:textColor="@android:color/holo_red_light"
@@ -77,7 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="박태준/전선욱"
+        android:text="작가이름"
         android:layout_marginStart="4dp" />
 
 

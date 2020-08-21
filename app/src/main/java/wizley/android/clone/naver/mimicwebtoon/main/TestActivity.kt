@@ -46,19 +46,27 @@ class TestActivity: AppCompatActivity(){
 
     private fun parseEpisodeList(no: String){
         CoroutineScope(Dispatchers.Default).launch{
-            val doc = Jsoup.connect("https://comic.naver.com/webtoon/list.nhn?titleId=$no").get()
-            val elements =  doc.select("tr")
+            var page = 1
+            var pos = "0"
+            while(pos != "1") {
+                val doc =
+                    Jsoup.connect("https://comic.naver.com/webtoon/list.nhn?titleId=$no&page=$page").get()
+                val elements = doc.select("tr")
 
-            elements.forEachIndexed{index, elem ->
-                val img = elem.select("td a img").attr("src")
-                val title = elem.select("td a img").attr("title")
-                val rate =  elem.select("div.rating_type strong").text()
+                elements.forEachIndexed { index, elem ->
+                    val img = elem.select("td a img").attr("src")
+                    val title = elem.select("td a img").attr("title")
+                    val rate = elem.select("div.rating_type strong").text()
+                    val date = elem.select("td.num").text()
 
-                if(img.isNotEmpty() and title.isNotEmpty() and rate.isNotEmpty()) {
-                    Log.e(TAG, img)
-                    Log.e(TAG, title)
-                    Log.e(TAG, rate)
+                    if (img.isNotEmpty() and title.isNotEmpty() and rate.isNotEmpty()) {
+                        pos = elem.select("td.title a").attr("href").toString()
+                            .split("&no=", "&weekday")[1]
+                        Log.e(TAG, pos)
+                    }
                 }
+
+                page++
             }
         }
     }
