@@ -20,7 +20,7 @@
 
 ### MainActivity
 
-가장 고민을 많이한 부분이었다. 이 부분에서 로직적인 문제로 고민을 했다기 보단 UI를 따라하는 것이 어려웠다. 
+가장 고민을 많이한 부분이었다. 이 부분에서 로직적인 문제로 고민을 했다기 보단 UI를 따라하는 것이 어려웠다. 아래의 이미지는 어플의 MainActivity 부분이다.
 
 ![original main](https://raw.githubusercontent.com/wizleysw/MimicWebtoon/master/img/original/naverMain.png)
 
@@ -82,7 +82,7 @@ Toolbar의 색상이 검은색으로 바꼈으며 overflow menu에서 클립보�
 
 Preference 라이브러리를 추가하게 되면 세팅과 같이 사용자에 의해 변경될 수 있는 여러 항목들에 대한 정보를 Preference로 간편하게 관리할 수 있다. 또한 Fragment를 생성하여 PreferenceScreen을 뷰로 뿌려주는 것이 가능하다. 이 액티비티의 내부 설정의 경우 앱의 모방 상태에서는 구현의 의미가 없었기에 형태만 비슷하게 적용하였고 동영상 자동 재생과 같이 클릭을 하여 세부 액티비티에서 설정이 필요한 부분을 추가로 구현하였다.
 
-![mimic setting](https://raw.githubusercontent.com/wizleysw/MimicWebtoon/master/img/original/naverSetting.png)
+![mimic setting](https://raw.githubusercontent.com/wizleysw/MimicWebtoon/master/img/mimic/mimicSetting.png)
 
 ### Result
 
