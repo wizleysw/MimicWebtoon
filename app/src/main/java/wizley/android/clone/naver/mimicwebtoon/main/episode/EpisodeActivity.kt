@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_episode.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.jsoup.Jsoup
 import wizley.android.clone.naver.mimicwebtoon.R
 import wizley.android.clone.naver.mimicwebtoon.databinding.ActivityEpisodeBinding
@@ -23,6 +21,9 @@ class EpisodeActivity: AppCompatActivity(), BottomNavigationView.OnNavigationIte
     private lateinit var binding: ActivityEpisodeBinding
     private lateinit var rvAdapter: EpisodeRVAdapter
     private lateinit var rvManager: RecyclerView.LayoutManager
+
+    private val episodeScope = CoroutineScope(Dispatchers.Default)
+
     private var name: String? = null
     private var serial: String? = null
 
@@ -36,6 +37,12 @@ class EpisodeActivity: AppCompatActivity(), BottomNavigationView.OnNavigationIte
         initActionBar()
         initGnbBar()
         initRecyclerView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        episodeScope.cancel()
     }
 
     private fun initArgumentInfo(){
@@ -140,7 +147,8 @@ class EpisodeActivity: AppCompatActivity(), BottomNavigationView.OnNavigationIte
 
     private fun parseEpisodeList(no: String){
         val arrayList = ArrayList<EpisodeInfo>()
-        CoroutineScope(Dispatchers.Default).launch{
+
+        episodeScope.launch{
             var page = 1
             var pos = "0"
             while(pos != "1") {
@@ -165,7 +173,7 @@ class EpisodeActivity: AppCompatActivity(), BottomNavigationView.OnNavigationIte
 
             rvAdapter.episodes = arrayList
 
-            CoroutineScope(Dispatchers.Main).launch {
+            withContext(Dispatchers.Main){
                 rvAdapter.notifyDataSetChanged()
             }
         }

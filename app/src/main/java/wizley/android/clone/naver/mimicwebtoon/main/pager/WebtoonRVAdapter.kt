@@ -30,10 +30,7 @@ class WebtoonRVAdapter(
 
     override fun onBindViewHolder(holder: WebtoonHolder, position: Int) {
         holder.itemView.setOnClickListener{
-            val intent = Intent(context, EpisodeActivity::class.java)
-            intent.putExtra("serial", webtoons[position].no)
-            intent.putExtra("name", webtoons[position].title)
-            context.startActivity(intent)
+            launchEpisodeActivity(position)
         }
 
         Glide.with(holder.itemView.context)
@@ -43,6 +40,13 @@ class WebtoonRVAdapter(
         holder.itemView.title.text = webtoons[position].title
         holder.itemView.star_rating.text = webtoons[position].star
         holder.itemView.author.text = webtoons[position].author
+    }
+
+    private fun launchEpisodeActivity(position: Int){
+        val intent = Intent(context, EpisodeActivity::class.java)
+        intent.putExtra("serial", webtoons[position].no)
+        intent.putExtra("name", webtoons[position].title)
+        context.startActivity(intent)
     }
 
 }

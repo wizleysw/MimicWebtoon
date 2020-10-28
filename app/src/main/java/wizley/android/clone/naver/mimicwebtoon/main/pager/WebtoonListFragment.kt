@@ -9,17 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_webtoonlist.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.jsoup.Jsoup
 import wizley.android.clone.naver.mimicwebtoon.databinding.FragmentWebtoonlistBinding
 
 class WebtoonListFragment: Fragment(){
-
     private lateinit var binding: FragmentWebtoonlistBinding
     private lateinit var rvAdapter: WebtoonRVAdapter
     private lateinit var rvManager: RecyclerView.LayoutManager
+
+    private val webtoonListScope = CoroutineScope(Dispatchers.Default)
 
     companion object {
         fun newInstance(param: Int): WebtoonListFragment {
@@ -106,7 +105,7 @@ class WebtoonListFragment: Fragment(){
     private fun parseWebtoonList(day: String){
         val arrayList = ArrayList<WebtoonInfo>()
 
-        CoroutineScope(Dispatchers.Default).launch{
+        webtoonListScope.launch{
             val doc = Jsoup.connect("https://comic.naver.com/webtoon/weekdayList.nhn?week=$day").get()
             val elements = doc.select("ul.img_list li")
 
@@ -122,10 +121,15 @@ class WebtoonListFragment: Fragment(){
 
             rvAdapter.webtoons = arrayList
 
-            CoroutineScope(Dispatchers.Main).launch{
+            withContext(Dispatchers.Main){
                 rvAdapter.notifyDataSetChanged()
             }
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        webtoonListScope.cancel()
+    }
 }

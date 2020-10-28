@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import java.lang.IllegalStateException
 
-class ViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm){
+class ViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
     val NUM_PAGES = 9
 
     override fun getCount(): Int {
