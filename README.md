@@ -15,7 +15,7 @@ Resource related infos are not included as CopyRight issue.
 
 Dev details are written in Korean. 
 
-https://bughunting.kr/android/Kotlin%EC%9C%BC%EB%A1%9C-%EB%84%A4%EC%9D%B4%EB%B2%84%EC%9B%B9%ED%88%B0-%ED%81%B4%EB%A1%A0-%EC%BD%94%EB%94%A9%ED%95%B4%EB%B3%B4%EA%B8%B0/
+https://bughunting.kr/dev/Kotlin%EC%9C%BC%EB%A1%9C-%EB%84%A4%EC%9D%B4%EB%B2%84%EC%9B%B9%ED%88%B0-%ED%81%B4%EB%A1%A0-%EC%BD%94%EB%94%A9%ED%95%B4%EB%B3%B4%EA%B8%B0/
 
 ## Objectives
 
